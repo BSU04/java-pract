@@ -3,13 +3,8 @@ package dbproj;
 import java.sql.*;
 import java.util.*;
 public class PreparedStatementExample {
-		// SQL Query
 	   private static final String INSERT_STUDENT_QUERY = "INSERT INTO STUDENT5 VALUES (?,?,?,?)";
-
-	   // main method
 	   public static void main(String[] args ) {
-
-	     // declare variables
 	     Scanner scan = null;
 	     int n = 0;
 	     int stid= 0;
@@ -25,10 +20,7 @@ public class PreparedStatementExample {
 	    	 Class.forName("oracle.jdbc.driver.OracleDriver"); //load the driver class 
 	    	 con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","system","cmi");//create  the connection object 
 	       
-	        scan = new Scanner(System.in);//create Scanner class object
-	        
-	        // compile SQL query and store it in
-	        // PreparedStatement object
+	        scan = new Scanner(System.in);
 	        if(con != null) {
 	           ps = con.prepareStatement(INSERT_STUDENT_QUERY);
 	        }
@@ -43,7 +35,7 @@ public class PreparedStatementExample {
 	        if(scan != null && ps != null) {
 	           for(int i=0; i<n; i++) {
 
-	              // read input values
+	              
 	              System.out.println("\nEnter Student-"+(i+1)+" details,");
 	              System.out.print("Student ID: ");
 	              stid = scan.nextInt();
@@ -53,8 +45,6 @@ public class PreparedStatementExample {
 	              address = scan.next();
 	              System.out.print("City: ");
 	              city = scan.next();
-
-	              // set parameters values
 	              ps.setInt(1, stid);
 	              ps.setString(2, name);
 	              ps.setString(3, address);
@@ -65,7 +55,6 @@ public class PreparedStatementExample {
 	           }
 	        }
 	        
-	        // process the result
 	        if(result == 0) {
 	           System.out.println("\nRecords insertion failed");
 	        } else {
@@ -75,7 +64,6 @@ public class PreparedStatementExample {
 	        ResultSet rs=ps.executeQuery("select * from student5");  // change here too the student
 	    	while(rs.next())  
 	    	System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+" "+rs.getString(4));  
-	    	// update this program with selecting one record / update a record / delete a record etc  
 	    	System.out.println("done");
 	    		con.close(); 
 

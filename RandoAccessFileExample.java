@@ -14,6 +14,20 @@ public static void main(String[] args) throws IOException
    {
 	 file.writeInt(i);
    }
+   
+   /* sfjshfjkfksf
+   
+   
+   
+   
+   
+   
+					*/
+   
+   
+   
+   
+   
 // Print the current length of the file. 
    System.out.println("Current length of file: " +file.length());
    
